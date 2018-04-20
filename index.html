@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <style>
+   img{
+       height: 28vh;
+       width: 60%;
+       opacity:0;
+    
+   }
+   table{
+       height:100%;
+       width:70%;
+       margin:auto;
+       
+   }
+   td{
+    
+     cursor: pointer;
+     
+     text-align: center;
+ }
+ h1{
+     background: gray;
+     color: white;
+     text-align: center;
+     margin-top: 0;
+     
+ }
+ body{
+     margin:0;
+     padding: 0;
+     background:rgb(46, 48, 51);
+ }
+ @media screen and (max-width: 768px){
+    table{
+    width:90%;
+}
+ }
+ 
+ @media screen and (max-width: 567.99px) and (min-width: 348px){
+ 
+img{
+    height:25vh;
+    width:80%;
+}
+
+ }
+ @media screen and (max-width: 347.99px){
+     img{
+         width:94%;
+         height:20vh; 
+
+     }
+     table{
+    width:94%;
+}
+     
+     
+
+ }
+   
+   </style>
+</head>
+<body>
+
+    <h1>0</h1>
+    <table>
+<tr>
+    <td> <img src="https://upload.wikimedia.org/wikipedia/sl/thumb/7/7f/Mickey_Mouse.svg/889px-Mickey_Mouse.svg.png"></td>
+    <td><img src="https://upload.wikimedia.org/wikipedia/sl/thumb/7/7f/Mickey_Mouse.svg/889px-Mickey_Mouse.svg.png"></td>
+    <td><img src="https://upload.wikimedia.org/wikipedia/sl/thumb/7/7f/Mickey_Mouse.svg/889px-Mickey_Mouse.svg.png"></td>
+</tr>
+<tr>
+ <td><img src="https://upload.wikimedia.org/wikipedia/sl/thumb/7/7f/Mickey_Mouse.svg/889px-Mickey_Mouse.svg.png"></td>
+ <td> <img src="https://upload.wikimedia.org/wikipedia/sl/thumb/7/7f/Mickey_Mouse.svg/889px-Mickey_Mouse.svg.png"></td>
+ <td><img src="https://upload.wikimedia.org/wikipedia/sl/thumb/7/7f/Mickey_Mouse.svg/889px-Mickey_Mouse.svg.png"></td>
+    </tr>
+    <tr>
+            <td><img src="https://upload.wikimedia.org/wikipedia/sl/thumb/7/7f/Mickey_Mouse.svg/889px-Mickey_Mouse.svg.png"></td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/sl/thumb/7/7f/Mickey_Mouse.svg/889px-Mickey_Mouse.svg.png"></td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/sl/thumb/7/7f/Mickey_Mouse.svg/889px-Mickey_Mouse.svg.png"></td>
+        </tr>
+
+  </table>
+  
+  <script>
+      alert("Hit mickey, get 10 points and win!!!");
+var img=document.querySelectorAll("img");
+var i;
+var timer;
+var update=document.querySelector("h1");
+var total=0;
+var count=[0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ];
+img.forEach(function(item,index){
+    item.addEventListener("click",function(){
+if(count[index]==1)
+{
+total=total+1;
+disappear(index);
+}
+})
+})
+timer=setInterval(function(){
+    i=Math.floor(Math.random() * 9);
+    count[i]=1;
+  img[i].style.opacity=1;
+  lost(i);    
+},1200);
+ function lost(k){
+     setTimeout(function(){
+         count[k]=0;
+     img[k].style.opacity=0;
+     },1200)
+ }
+ function disappear(index){
+
+     update.textContent=total;
+    
+     img[index].style.opacity=0;
+     count[index]=0;
+     setTimeout(function(){
+        if(total==10)
+     {
+         clearInterval(timer);
+         alert("you won");
+         
+     }
+     },0);
+    
+     
+
+ }
+
+
+
+   </script>
+
+
+
+</body>
+</html>
