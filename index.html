@@ -106,16 +106,23 @@ disappear(index);
 })
 })
 timer=setInterval(function(){
+    var j=i;
+    i=Math.floor(Math.random() * 9);
+    if(i==j)
     i=Math.floor(Math.random() * 9);
     count[i]=1;
   img[i].style.opacity=1;
+  img[i].style.transform="scaleX(-1)";
+  setTimeout(function(){img[i].style.transform="scaleX(1)";},500);
+  
+
   lost(i);    
 },1200);
  function lost(k){
      setTimeout(function(){
          count[k]=0;
      img[k].style.opacity=0;
-     },1200)
+     },1190)
  }
  function disappear(index){
 
